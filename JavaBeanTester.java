@@ -115,7 +115,10 @@ public class JavaBeanTester {
 
         } else if (clazz == char.class || clazz == Character.class) {
             return 'Y';
-            
+
+        } else if (clazz.isEnum()) {
+            return clazz.getEnumConstants()[0];
+
      // Add your own rules here
             
         } else {
