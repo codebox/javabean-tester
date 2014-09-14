@@ -21,14 +21,25 @@ import org.slf4j.LoggerFactory;
 /**
  * This helper class can be used to unit test the get/set/equals/canEqual/toString/hashCode methods of JavaBean-style
  * Value Objects.
- * 
+ *
  * @author rob.dawson
  * @author jeremy.landis
  */
-public class JavaBeanTester {
+public final class JavaBeanTester {
 
-    public final static boolean PERFORM_CAN_EQUALS   = true;
-    public final static boolean LOAD_UNDERLYING_DATA = true;
+    /**
+     * PERFORM_CAN_EQUALS is boolean value that is passed into static methods to determine if can equals should be
+     * performed in. Generally this will be true except for cases for it otherwise fails due to missing support within
+     * this library.
+     */
+    public static final boolean PERFORM_CAN_EQUALS   = true;
+
+    /**
+     * LOAD_UNDERLYING_DATA is boolean value that is passed into static methods to determine if underlying object data
+     * should be populated. Generally this will be true except for cases for it otherwise fails due to missing support
+     * within this library.
+     */
+    public static final boolean LOAD_UNDERLYING_DATA = true;
 
     /**
      * JavaBeanTester constructor is private to prevent instantiation of object.
@@ -36,10 +47,10 @@ public class JavaBeanTester {
     private JavaBeanTester() {
         // Hide constructor of static class.
     }
-    
+
     /**
      * Tests the equals/hashCode/toString methods of the specified class.
-     * 
+     *
      * @param <T>
      *            the type parameter associated with the class under test.
      * @param <E>
@@ -48,6 +59,8 @@ public class JavaBeanTester {
      *            the class under test.
      * @param extension
      *            extension of class under test.
+     * @param loadUnderlyingData
+     *            load underlying data with values.
      * @throws IntrospectionException
      *             thrown if the JavaBeanTester.load method throws this exception for the class under test.
      * @throws InstantiationException
@@ -139,7 +152,7 @@ public class JavaBeanTester {
     /**
      * Equals Tests will traverse one object changing values until all have been tested against another object. This is
      * done to effectively test all paths through equals.
-     * 
+     *
      * @param <T>
      *            the type parameter associated with the class under test.
      * @param instance
@@ -231,7 +244,7 @@ public class JavaBeanTester {
 
     /**
      * Tests the load methods of the specified class.
-     * 
+     *
      * @param <T>
      *            the type parameter associated with the class under test.
      * @param clazz
@@ -252,13 +265,15 @@ public class JavaBeanTester {
 
     /**
      * Tests the get/set/equals/hashCode/toString methods of the specified class.
-     * 
+     *
      * @param <T>
      *            the type parameter associated with the class under test.
      * @param <E>
      *            the type parameter associated with the extension class under test.
      * @param clazz
      *            the class under test.
+     * @param extension
+     *            extension of class under test.
      * @param checkEquals
      *            should equals be checked (use true unless good reason not to).
      * @param loadUnderlyingData
@@ -286,7 +301,7 @@ public class JavaBeanTester {
 
     /**
      * Build Mock Value Tests.
-     * 
+     *
      * @param <T>
      *            the type parameter associated with the class under test.
      * @param clazz
@@ -303,7 +318,7 @@ public class JavaBeanTester {
 
     /**
      * Build Value Tests. Will loop through recursively all objects.
-     * 
+     *
      * @param <T>
      *            the type parameter associated with the class under test.
      * @param clazz
@@ -386,7 +401,7 @@ public class JavaBeanTester {
 
     /**
      * Getter Setter Tests.
-     * 
+     *
      * @param <T>
      *            the type parameter associated with the class under test.
      * @param clazz
@@ -457,7 +472,7 @@ public class JavaBeanTester {
 
     /**
      * Set using alternate test values.
-     * 
+     *
      * @param <T>
      *            the type parameter associated with the class under test.
      * @param clazz
@@ -471,7 +486,7 @@ public class JavaBeanTester {
 
     /**
      * Set using null test values.
-     * 
+     *
      * @param <T>
      *            the type parameter associated with the class under test.
      * @param clazz
@@ -484,7 +499,7 @@ public class JavaBeanTester {
 
     /**
      * Set using standard test values.
-     * 
+     *
      * @param <T>
      *            the type parameter associated with the class under test.
      * @param clazz
@@ -498,7 +513,7 @@ public class JavaBeanTester {
 
     /**
      * Set Values for object.
-     * 
+     *
      * @param <T>
      *            the type parameter associated with the class under test.
      * @param clazz
