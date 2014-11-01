@@ -21,6 +21,7 @@ public class SampleDepthBean {
     private Float                         floatWrapper;
     private Character                     characterWrapper;
     private Byte                          byteWrapper;
+    private Byte[]                        byteArray;
     private boolean                       booleanPrimitive;
     private int                           intPrimitive;
     private long                          longPrimitive;
