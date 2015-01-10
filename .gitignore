@@ -1,4 +1,6 @@
-/target
-.settings
 *.classpath
+*.factorypath
 *.project
+
+.settings
+target
