@@ -31,7 +31,7 @@ public final class JavaBeanTester {
 
     /**
      * PERFORM_CAN_EQUALS is boolean value that is passed into static methods to determine if can equals should be
-     * performed in. Generally this will be true except for cases for it otherwise fails due to missing support within
+     * performed. Generally this will be true except for cases for it otherwise fails due to missing support within
      * this library.
      */
     public static final boolean PERFORM_CAN_EQUALS   = true;
@@ -42,6 +42,18 @@ public final class JavaBeanTester {
      * within this library.
      */
     public static final boolean LOAD_UNDERLYING_DATA = true;
+
+    /**
+     * SKIP_CAN_EQUALS is boolean value that is passed into static methods to determine if can equals should be
+     * performed. Use this in cases where it otherwise fails due to missing support within this library.
+     */
+    public static final boolean SKIP_CAN_EQUALS      = false;
+
+    /**
+     * SKIP_LOAD_UNDERLYING_DATA is boolean value that is passed into static methods to determine if underlying object data
+     * should be populated. Use this in cases where it otherwise fails due to missing support within this library.
+     */
+    public static final boolean SKIP_LOAD_UNDERLYING_DATA = true;
 
     /**
      * JavaBeanTester constructor is private to prevent instantiation of object.

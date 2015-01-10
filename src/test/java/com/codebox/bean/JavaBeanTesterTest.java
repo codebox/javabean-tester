@@ -49,14 +49,14 @@ public class JavaBeanTesterTest {
 
     @Test
     public void load_fullBeanEqualsSkipUnderlying() throws IntrospectionException {
-        JavaBeanTester.load(SampleBean.class, this.sampleBean, !JavaBeanTester.LOAD_UNDERLYING_DATA);
-        JavaBeanTester.load(SampleBean.class, this.expectedBean, !JavaBeanTester.LOAD_UNDERLYING_DATA);
-        JavaBeanTester.equalsTests(this.sampleBean, this.expectedBean, !JavaBeanTester.LOAD_UNDERLYING_DATA);
+        JavaBeanTester.load(SampleBean.class, this.sampleBean, JavaBeanTester.SKIP_LOAD_UNDERLYING_DATA);
+        JavaBeanTester.load(SampleBean.class, this.expectedBean, JavaBeanTester.SKIP_LOAD_UNDERLYING_DATA);
+        JavaBeanTester.equalsTests(this.sampleBean, this.expectedBean, JavaBeanTester.SKIP_LOAD_UNDERLYING_DATA);
     }
 
     @Test
     public void load_fullBeanSkipUnderlyingData() throws IntrospectionException {
-        JavaBeanTester.load(SampleBean.class, this.sampleBean, !JavaBeanTester.LOAD_UNDERLYING_DATA);
+        JavaBeanTester.load(SampleBean.class, this.sampleBean, JavaBeanTester.SKIP_LOAD_UNDERLYING_DATA);
         Assert.assertNotNull(this.sampleBean.getDoubleWrapper());
     }
 
@@ -98,7 +98,7 @@ public class JavaBeanTesterTest {
     public void test_fullBeanSkipUnderlyingData() throws IntrospectionException, InstantiationException,
             IllegalAccessException {
         JavaBeanTester.test(SampleBean.class, SampleExtensionBean.class, JavaBeanTester.PERFORM_CAN_EQUALS,
-                !JavaBeanTester.LOAD_UNDERLYING_DATA);
+                JavaBeanTester.SKIP_LOAD_UNDERLYING_DATA);
     }
 
     @Test
@@ -109,7 +109,7 @@ public class JavaBeanTesterTest {
 
     @Test
     public void test_skipCanEquals() throws IntrospectionException, InstantiationException, IllegalAccessException {
-        JavaBeanTester.test(SampleBean.class, SampleExtensionBean.class, !JavaBeanTester.PERFORM_CAN_EQUALS,
+        JavaBeanTester.test(SampleBean.class, SampleExtensionBean.class, JavaBeanTester.SKIP_CAN_EQUALS,
                 JavaBeanTester.LOAD_UNDERLYING_DATA);
     }
 
