@@ -1,3 +1,5 @@
+package net.codebox.javabeantester;
+
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
@@ -32,7 +34,7 @@ public class JavaBeanTester {
                     continue nextProp;
                 }
             }
-            findBooleanIsMethods(clazz, prop);
+
             final Method getter = prop.getReadMethod();
             final Method setter = prop.getWriteMethod();
             
@@ -128,30 +130,5 @@ public class JavaBeanTester {
         }
     }
 
-    /**
-     * Hunt down missing Boolean read method if needed as Introspector cannot find 'is' getters
-     * for Boolean type properties.
-     * 
-     * @param clazz
-     *            the type being introspected
-     * @param descriptor
-     *            the property descriptor found so far
-     */
-    public static <T> void findBooleanIsMethods(Class<T> clazz, PropertyDescriptor descriptor) throws IntrospectionException {
-            if ( needToFindReadMethod(descriptor) ) {
-                findTheReadMethod(descriptor, clazz);
-            }
-    }
-
-    private static boolean needToFindReadMethod(PropertyDescriptor property) {
-        return property.getReadMethod() == null && property.getPropertyType() == Boolean.class;
-    }
-
-    private static <T> void findTheReadMethod(PropertyDescriptor descriptor, Class<T> clazz) {
-        try {
-            PropertyDescriptor pd = new PropertyDescriptor(descriptor.getName(), clazz);
-            descriptor.setReadMethod(pd.getReadMethod());
-        } catch (IntrospectionException e) {}
-    }
 }
 
